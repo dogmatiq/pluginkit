@@ -19,7 +19,7 @@ type ApplicationService interface {
 	// k is the application's identity key. It returns an error if k is not one
 	// of the keys returned by ApplicationKeys().
 	//
-	// The returned io.Closer is used to free any resources allocated for the
-	// application, such as closing database connections.
+	// The returned io.Closer, if non-nil, is used to free any resources
+	// allocated for the application, such as closing database connections.
 	NewApplication(ctx context.Context, k string) (dogma.Application, io.Closer, error)
 }
