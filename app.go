@@ -7,10 +7,6 @@ import (
 	"github.com/dogmatiq/dogma"
 )
 
-// ApplicationServiceName is the name of the application service, as returned by
-// Plugin.Services().
-const ApplicationServiceName = "application"
-
 // ApplicationService is a plugin service that can instantiate Dogma
 // applications.
 type ApplicationService interface {

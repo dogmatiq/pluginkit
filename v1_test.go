@@ -63,18 +63,11 @@ var _ = Describe("type v1", func() {
 		})
 	})
 
-	Describe("func Services()", func() {
-		It("returns the list of supported services", func() {
-			Expect(plugin.Services()).To(ConsistOf(
-				ApplicationServiceName,
-			))
-		})
-	})
-
 	Describe("func ApplicationService()", func() {
 		It("returns the plugin implementation as an ApplicationService", func() {
-			s := plugin.ApplicationService()
+			s, ok := plugin.ApplicationService()
 			Expect(s).NotTo(BeNil())
+			Expect(ok).To(BeTrue())
 		})
 	})
 

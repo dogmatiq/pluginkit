@@ -12,13 +12,9 @@ type Plugin interface {
 	// File returns the path to the plugin file, as passed to Load().
 	File() string
 
-	// Services returns a list of the services implemented by the plugin.
-	Services() []string
-
-	// ApplicationService returns the plugin's ApplicationService.
-	//
-	// It panics if the plugin does not implement this service.
-	ApplicationService() ApplicationService
+	// ApplicationService returns the plugin's ApplicationService, if it is
+	// implemented.
+	ApplicationService() (ApplicationService, bool)
 
 	// Close closes the plugin.
 	Close() error

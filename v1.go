@@ -23,18 +23,9 @@ func (p *v1) File() string {
 	return p.file
 }
 
-func (p *v1) Services() []string {
-	var services []string
-
-	if _, ok := p.impl.(ApplicationService); ok {
-		services = append(services, ApplicationServiceName)
-	}
-
-	return services
-}
-
-func (p *v1) ApplicationService() ApplicationService {
-	return p.impl.(ApplicationService)
+func (p *v1) ApplicationService() (ApplicationService, bool) {
+	s, ok := p.impl.(ApplicationService)
+	return s, ok
 }
 
 func (p *v1) Close() error {
