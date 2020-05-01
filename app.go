@@ -2,15 +2,10 @@ package pluginkit
 
 import (
 	"context"
-	"errors"
 	"io"
 
 	"github.com/dogmatiq/dogma"
 )
-
-// ErrUnknownApplication indicates that NewApplication() was called with an
-// unrecognised application key.
-var ErrUnknownApplication = errors.New("unknown application")
 
 // ApplicationServiceName is the name of the application service, as returned by
 // Plugin.Services().
@@ -25,8 +20,8 @@ type ApplicationService interface {
 
 	// NewApplication returns a new instance of an application.
 	//
-	// k is the application's identity key. If it is unrecocgnized
-	// ErrUnknownApplication is returned.
+	// k is the application's identity key. It returns an error if k is not one
+	// of the keys returned by ApplicationKeys().
 	//
 	// The returned io.Closer is used to free any resources allocated for the
 	// application, such as closing database connections.
